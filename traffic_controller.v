@@ -19,8 +19,8 @@ localparam S0  = 3'd0, // N/S Forward Green
            S0Y = 3'd1, // N/S Forward Yellow
            S1  = 3'd2, // E/W Forward Green
            S1Y = 3'd3, // E/W Forward Yellow
-           S2  = 3'd4, // N?W & S?E Protected Lefts
-           S3  = 3'd5, // E?N & W?S Protected Lefts
+           S2  = 3'd4, // N->W & S->E Protected Lefts
+           S3  = 3'd5, // E->N & W->S Protected Lefts
            S4  = 3'd6; // All RED Buffer
 
 reg [2:0] state;
@@ -73,15 +73,15 @@ always @(*) begin
       W_forward = YELLOW;
     end
     S2: begin
-      N_left = GREEN;  // North ? West
-      S_left = GREEN;  // South ? East
+      N_left = GREEN;  // North -> West
+      S_left = GREEN;  // South -> East
     end
     S3: begin
-      E_left = GREEN;  // East ? North
-      W_left = GREEN;  // West ? South
+      E_left = GREEN;  // East -> North
+      W_left = GREEN;  // West -> South
     end
     S4: begin
-      // All RED — already default
+      // All RED â€” already default
     end
   endcase
 end
